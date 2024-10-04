@@ -67,6 +67,9 @@ for script in "${scripts_array[@]}"
 do
     category=$(do_sed -n 's/#=//p' "${script}")
     description=$(do_sed -n 's/#@//p' "${script}")
+    #:a 是一个标记
+    #N 命令将下一行读入模式空间
+    #$!ba 命令会在最后一行之前($!)循环到标记a
     description=$(echo "${description}" | do_sed -n ':a;N;$!ba;s/\n/<br>/gp')
 
     category_array+=("${category}")
