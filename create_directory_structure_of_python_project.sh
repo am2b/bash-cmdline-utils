@@ -3,6 +3,7 @@
 #=python
 #@create directory structure of python project
 #@create .envrc .gitignore and LICENSE
+#@usage:script.sh project_name
 
 project_name="$1"
 
