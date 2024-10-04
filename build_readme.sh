@@ -67,12 +67,19 @@ for script in "${scripts_array[@]}"
 do
     category=$(do_sed -n 's/#=//p' "${script}")
     description=$(do_sed -n 's/#@//p' "${script}")
+    description=$(echo "${description}" | do_sed -n ':a;N;$!ba;s/\n/<br>/gp')
 
     category_array+=("${category}")
 
     #add $ operator before \n
     scripts_info_array["${script}"]="${category}"$'\n'"${description}"
 done
+
+#打印关联数组
+#"${!scripts_info_array[@]}":获取关联数组的所有键
+#for key in "${!scripts_info_array[@]}"; do
+#    echo "${scripts_info_array[$key]}"
+#done
 
 #-u,--unique:unique keys
 #把数组每个元素作为一行字符串,然后用sort来对行进行排列,并且单一化
