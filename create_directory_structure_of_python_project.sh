@@ -17,7 +17,7 @@ sed -i '' 's/authors = \["am2b <[^>]*>"\]/authors = \["am2b"\]/' pyproject.toml
 mkdir src
 mv "${project_name}" src
 
-cat <<EOL > .envrc
+cat <<'EOL' > .envrc
 export VIRTUAL_ENV=$(poetry env info --path)
 layout python $VIRTUAL_ENV/bin/python
 EOL
